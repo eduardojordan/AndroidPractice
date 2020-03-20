@@ -9,9 +9,26 @@ object FilmsRepo{
         return field
 
     }
-    private fun dummyFilms():MutableList<Film>{
+    private fun dummyFilms():List<Film>{
+// Opcion2 map
+       return  (0..9).map {
+            Film(
+                title = "Film $it",
+                genre = "Genre $it" ,
+                release = "200 $it-0$it-0$it",
+                voteRating = it.toDouble(),
+                overview = "Overview $it"
+            )
+        }
+
+
+
+        /* // Opcion 1
         val films: MutableList<Film> = mutableListOf()
-        for (i in 1..9){
+        val range: IntRange = 0..99
+
+
+        for (i in 0..9){
             films.add(
                 Film(
                     title = "Film ${i}",
@@ -24,5 +41,7 @@ object FilmsRepo{
 
         }
         return films
+        */
+
     }
 }
