@@ -11,19 +11,32 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FilmActivity: AppCompatActivity() {
 
+    val list: RecyclerView by lazy {
+        val instance =  findViewById<RecyclerView>(R.id.list_films)
+        instance.layoutManager = LinearLayoutManager( this)
+
+       instance
+    }
+
+    val adapter: FilmsAdapter by lazy {
+        FilmsAdapter { film ->
+            this.showDetails()
+        }
+       }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_films)
 
-        val list = findViewById<RecyclerView>(R.id.list_films)
-        list.layoutManager = LinearLayoutManager(this)
+     //   val list = findViewById<RecyclerView>(R.id.list_films)
+     //   list.layoutManager = LinearLayoutManager(this)
 
-        val adapter = FilmsAdapter {item ->
+    //    val adapter = FilmsAdapter {film ->
             // COn esto se ve en consola
            // Log.d(FilmActivity::class.java.canonicalName, item.toString())
-            this.showDetails()
+      //      this.showDetails()
 
-        }
+     //   }
         list.adapter = adapter
         adapter.setFilms(FilmsRepo.films)
     }
