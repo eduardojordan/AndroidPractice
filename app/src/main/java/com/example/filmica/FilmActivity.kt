@@ -18,7 +18,12 @@ class FilmActivity: AppCompatActivity() {
         val list = findViewById<RecyclerView>(R.id.list_films)
         list.layoutManager = LinearLayoutManager(this)
 
-        val adapter = FilmsAdapter()
+        val adapter = FilmsAdapter {item ->
+            // COn esto se ve en consola
+           // Log.d(FilmActivity::class.java.canonicalName, item.toString())
+            this.showDetails()
+
+        }
         list.adapter = adapter
         adapter.setFilms(FilmsRepo.films)
     }
@@ -34,7 +39,7 @@ class FilmActivity: AppCompatActivity() {
   //      }
  //   }
 
-    fun showDetails(clickedView: View){
+    fun showDetails(){
         val intentToDetails : Intent = Intent(this,DetailsActivity::class.java)
         startActivity(intentToDetails)
 
