@@ -6,12 +6,21 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class FilmActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_films)
+
+        val list = findViewById<RecyclerView>(R.id.list_films)
+        list.layoutManager = LinearLayoutManager(this)
+
+        val adapter = FilmsAdapter()
+        list.adapter = adapter
+        adapter.setFilms(FilmsRepo.films)
     }
  //       val button: Button = findViewById(R.id.btn_film)
  //       button.setOnClickListener{
