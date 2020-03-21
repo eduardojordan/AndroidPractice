@@ -9,6 +9,11 @@ object FilmsRepo{
         return field
 
     }
+
+    fun findFilmById(id:String): Film? {
+       return films.find { film -> film.id == id }
+    }
+
     private fun dummyFilms():List<Film>{
 // Opcion2 map
        return  (0..9).map {
