@@ -1,5 +1,6 @@
 package com.example.filmica
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class FilmsFragment: Fragment() {
+    lateinit var listener: OnItemClickListener
+
     val list: RecyclerView by lazy {
 
         val instance =  view!!.findViewById<RecyclerView>(R.id.list_films)
@@ -19,20 +22,35 @@ class FilmsFragment: Fragment() {
     }
 
     val adapter: FilmsAdapter by lazy {
-        FilmsAdapter { film ->
-            this.showDetails(film.id)
+        val instance = FilmsAdapter { film ->
+            this.listener.onItemClicked(film)
         }
+    instance.setFilms(FilmsRepo.films)
+        instance
+
+    }
+
+    override fun onAttach(context: Context?) {
+       super.onAttach(context)
+
+       if (context is OnItemClickListener){
+          listener = context
+       }
     }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_films,container, false)
-
     }
 
-    fun showDetails(filmId: String){
-        val intentToDetails : Intent = Intent(this.context,DetailsActivity::class.java)
-        intentToDetails.putExtra( "id", filmId)
-        startActivity(intentToDetails)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        list.adapter = adapter
+    }
+
+
+
+    interface OnItemClickListener{
+        fun onItemClicked(film:Film)
 
     }
 }

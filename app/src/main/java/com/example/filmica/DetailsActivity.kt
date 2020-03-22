@@ -14,30 +14,19 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
-       val id =  intent.getStringExtra("id")
-        val film = FilmsRepo.findFilmById(id)
 
-       film?.let{
-           with(film){
-               labelTitle.text = title
-               labelOverview.text = overview
-               labelGenre.text = genre
-               labelRelease.text = release
-           }
+     //   val film = FilmsRepo.findFilmById(id)
 
-       }
+        if (savedInstanceState == null) {
+            val id = intent.getStringExtra("id")
+
+            val detailsFragment = DetailsFragment.newInstance(id)
 
 
 
-
-
-
-
-
-       val button: Button = findViewById(R.id.btn_add)
-
-        button.setOnClickListener{ view ->
-            Toast.makeText( this, "Added to list", Toast.LENGTH_LONG).show()
+            supportFragmentManager.beginTransaction()
+                .add(R.id.container_details, detailsFragment)
+                .commit()
         }
 
     }
