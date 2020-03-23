@@ -1,13 +1,11 @@
 package com.example.filmica
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class FilmsFragment: Fragment() {
@@ -17,6 +15,7 @@ class FilmsFragment: Fragment() {
 
         val instance =  view!!.findViewById<RecyclerView>(R.id.list_films)
         //instance.layoutManager = LinearLayoutManager( this.context)
+        instance.addItemDecoration(itemOffsetDecoration(R.dimen.offset_grid))
 
         instance
     }
