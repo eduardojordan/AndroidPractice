@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_details.view.*
+import kotlinx.android.synthetic.main.item_film.view.*
+import kotlinx.android.synthetic.main.item_film.view.labelTitle
+import kotlinx.android.synthetic.main.item_film.view.labelGenre as labelGenre1
 
 
 class FilmsAdapter(var itemClickListener: ((Film) -> Unit)? = null): RecyclerView.Adapter<FilmsAdapter.FilmViewHolder>() {
@@ -38,7 +42,17 @@ return list.count()
 var film: Film? = null
         set(value) {
             field = value
-            itemView.findViewById<TextView>(R.id.label_title).text = value?.title
+
+            value?.let{
+                with(itemView){
+                    with(value){
+                        labelTitle.text = value.title
+                        labelGenre.text = value.genre
+                        labelVotes.text = value.voteRating.toString()
+                    }
+                }
+            }
+
         }
 
         init {
