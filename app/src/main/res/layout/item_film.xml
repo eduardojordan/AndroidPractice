@@ -8,16 +8,13 @@
     app:cardCornerRadius="4dp"
     >
 
-
-
     <FrameLayout
         xmlns:tools="http://schemas.android.com/tools"
-
         android:layout_width="match_parent"
-
         android:layout_height="196dp">
 
         <ImageView
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark" />
@@ -55,7 +52,7 @@
                 tools:text="10.0" />
 
             <TextView
-                android:id="@+id/labelGenre"
+                android:id="@+id/titleGenre"
                 android:layout_width="match_parent"
                 android:layout_marginRight="8dp"
                 android:layout_marginEnd="8dp"

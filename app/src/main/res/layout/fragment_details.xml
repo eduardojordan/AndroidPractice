@@ -1,43 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="wrap_content"
+    >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp">
+
+    <ImageView
+        android:id="@+id/imgPoster"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="240dp" />
 
     <TextView
-        android:id = "@+id/labelTitle"
-        android:layout_width="match_parent"
+        android:id="@+id/labelTitle"
+        style="@style/Title.White"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="Film"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="@+id/imgPoster"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgPoster" />
 
     <TextView
-        android:id = "@+id/labelOverview"
-        android:layout_width="match_parent"
+        android:id="@+id/labelVotes"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:layout_marginTop="8dp" />
+        android:drawableStart="@drawable/ic_votes"
+        android:drawableLeft="@drawable/ic_votes"
+        android:drawablePadding="4dp"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelTitle"
+        tools:text="10.0" />
 
-    <TextView
-        android:id = "@+id/labelGenre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="normal"
-        android:layout_marginTop="8dp" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
 
-    <TextView
-        android:id = "@+id/labelRelease"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
-
-    <Button
         android:id="@+id/btnAdd"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.214"
+        app:srcCompat="?attr/colorAccent" />
+
+    <TextView
+        android:id="@+id/titleGenre"
+        style="@style/Title"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="43dp"
+        android:text="@string/label_genre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnAdd" />
+
+    <TextView
+        android:id="@+id/labelGenre"
+        android:layout_width="0dp"
+
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/label_add" />
-    
-</LinearLayout>
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/titleGenre"
+        app:layout_constraintTop_toBottomOf="@+id/titleGenre"
+        tools:text="Genre" />
+
+    <TextView
+        android:id="@+id/titleRelease"
+        style="@style/Title.Dark"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/labelRelease"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelGenre" />
+
+    <TextView
+        android:id="@+id/labelRelease"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/titleRelease"
+        app:layout_constraintTop_toBottomOf="@+id/titleRelease"
+        tools:text="2010-10-10" />
+
+    <TextView
+        android:id="@+id/titleOverview"
+        style="@style/Title.Dark"
+        android:layout_width="wrap_content"
+
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/labelOverview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelRelease" />
+
+    <TextView
+
+        android:id="@+id/labelOverview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+
+
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="@+id/titleOverview"
+        app:layout_constraintTop_toBottomOf="@+id/titleOverview"
+        tools:ignore="MissingConstraints"
+        tools:text="Lorem Ipsum" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

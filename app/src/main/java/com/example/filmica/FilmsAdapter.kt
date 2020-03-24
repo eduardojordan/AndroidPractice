@@ -4,13 +4,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_details.view.*
 import kotlinx.android.synthetic.main.item_film.view.*
 import kotlinx.android.synthetic.main.item_film.view.labelTitle
-import kotlinx.android.synthetic.main.item_film.view.labelGenre as labelGenre1
+import kotlinx.android.synthetic.main.fragment_details.view.labelVotes as labelVotes1
+import kotlinx.android.synthetic.main.item_film.view.titleGenre as titleGenre1
 
 
 class FilmsAdapter(var itemClickListener: ((Film) -> Unit)? = null): RecyclerView.Adapter<FilmsAdapter.FilmViewHolder>() {
@@ -47,7 +46,7 @@ var film: Film? = null
                 with(itemView){
                     with(value){
                         labelTitle.text = value.title
-                        labelGenre.text = value.genre
+                        titleGenre.text = value.genre
                         labelVotes.text = value.voteRating.toString()
                     }
                 }
