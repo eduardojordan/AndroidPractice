@@ -24,7 +24,7 @@ class FilmsFragment: Fragment() {
         val instance = FilmsAdapter { film ->
             this.listener.onItemClicked(film)
         }
-    instance.setFilms(FilmsRepo.films)
+  //  instance.setFilms(FilmsRepo.films)
         instance
 
     }
@@ -49,7 +49,13 @@ class FilmsFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        FilmsRepo.discoverFilms(context!!)
+        FilmsRepo.discoverFilms(context!!,
+            {films ->
+                adapter.setFilms(films)
+        },{error ->
+                error.printStackTrace()
+
+        })
     }
 
     interface OnItemClickListener{
