@@ -46,7 +46,11 @@ class FilmsFragment: Fragment() {
         list.adapter = adapter
     }
 
+    override fun onResume() {
+        super.onResume()
 
+        FilmsRepo.discoverFilms(context!!)
+    }
 
     interface OnItemClickListener{
         fun onItemClicked(film:Film)
