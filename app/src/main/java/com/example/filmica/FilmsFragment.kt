@@ -38,6 +38,24 @@ class FilmsFragment: Fragment() {
        }
     }
 
+    fun reload(){
+        FilmsRepo.discoverFilms(context!!,
+            {films ->
+                progress?.visibility = View.INVISIBLE
+                layoutError?.visibility = View.INVISIBLE
+                list.visibility = View.VISIBLE
+
+                adapter.setFilms(films)
+            },{error ->
+                progress?.visibility = View.INVISIBLE
+                list.visibility = View.INVISIBLE
+                layoutError?.visibility = View.VISIBLE
+
+                error.printStackTrace()
+
+            })
+    }
+
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_films,container, false)
     }
@@ -45,20 +63,13 @@ class FilmsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         list.adapter = adapter
+        btnRetry?.setOnClickListener { reload() }
     }
 
     override fun onResume() {
         super.onResume()
 
-        FilmsRepo.discoverFilms(context!!,
-            {films ->
-                progress.visibility = View.INVISIBLE
-                list.visibility = View.VISIBLE
-                adapter.setFilms(films)
-        },{error ->
-                error.printStackTrace()
-
-        })
+        this.reload()
     }
 
     interface OnItemClickListener{
