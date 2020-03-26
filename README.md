@@ -1,4 +1,4 @@
 # AndroidPractice
 
 ![ScreenShot](Main.jpg)
-![ScreenShot](Detail.jpg)
+![ScreenShot](detail.jpg)
