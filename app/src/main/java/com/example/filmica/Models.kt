@@ -32,23 +32,27 @@ data class Film(val id: String = UUID.randomUUID().toString(),
                 overview = jsonFilm.getString("overview"),
                 voteRating = jsonFilm.getDouble("vote_average"),
                 release = jsonFilm.getString("release_date"),
-                genre = (jsonFilm.getJSONArray("genre_ids").toString())
+            //    genre = (jsonFilm.getJSONArray("genre_ids").toString())
 // Resolver cambio de valores x su string
-//genre = parseGenres(jsonFilm.getJSONArray("genre_ids")) // ERROR
+genre = parseGenres(jsonFilm.getJSONArray("genre_ids")) // ERROR
             )
         }
 
-        private fun parseGenres(genresArray: JSONArray):String{
+        private fun parseGenres(genresArray: JSONArray):String {
             val genres = mutableListOf<String>()
+            
+            if (genresArray.length() == 0) {
+                return "Desconocido"
+            } else {
 
-            for (i in 0..(genresArray.length() - 1)) {
-                val genreId = genresArray.getInt(i)
-                val genre = APIConstants.genres[genreId] ?: ""
-                genres.add(genre)
+                for (i in 0..(genresArray.length() - 1)) {
+                    val genreId = genresArray.getInt(i)
+                    val genre = APIConstants.genres[genreId] ?: ""
+                    genres.add(genre)
+                }
+                return genres.reduce { acc, genre -> "$acc | $genre" }
             }
-            return genres.reduce { acc, genre -> "$acc | $genre" }
         }
-
 
     }
 }

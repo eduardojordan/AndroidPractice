@@ -1,6 +1,7 @@
 package com.example.filmica
 
 import android.net.Uri
+import com.android.volley.BuildConfig
 
 object ApiRoutes {
     fun discoverUrl(
@@ -26,5 +27,5 @@ object ApiRoutes {
         .scheme("https")
         .authority( "api.themoviedb.org")
         .appendPath("3")
-            .appendQueryParameter("api_key","bb3cda839e0cf4f922d98d8f8025e07b")
+            .appendQueryParameter("api_key", "bb3cda839e0cf4f922d98d8f8025e07b")
 }

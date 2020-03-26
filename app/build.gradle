@@ -15,6 +15,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary true
+       // buildConfigField 'String', 'MovieDBApiKey', "bb3cda839e0cf4f922d98d8f8025e07b"
     }
 
     buildTypes {
