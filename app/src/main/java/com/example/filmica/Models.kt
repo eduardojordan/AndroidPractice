@@ -9,8 +9,14 @@ data class Film(val id: String = UUID.randomUUID().toString(),
                 var genre: String = "",
                 var release: String = "",
                 var voteRating: Double = 0.0,
-                var overview: String = ""
+                var overview: String = "",
+                var poster: String = ""
 ){
+
+    fun getPosterUrl(): String{
+        return "$BASE_POSTER_URL$poster"
+    }
+
     companion object {
         fun parseFilms(response: JSONObject):MutableList<Film> {
             val films = mutableListOf<Film>()
@@ -32,9 +38,8 @@ data class Film(val id: String = UUID.randomUUID().toString(),
                 overview = jsonFilm.getString("overview"),
                 voteRating = jsonFilm.getDouble("vote_average"),
                 release = jsonFilm.getString("release_date"),
-            //    genre = (jsonFilm.getJSONArray("genre_ids").toString())
-// Resolver cambio de valores x su string
-genre = parseGenres(jsonFilm.getJSONArray("genre_ids")) // ERROR
+                poster = jsonFilm.optString("poster_path", ""),
+                genre = parseGenres(jsonFilm.getJSONArray("genre_ids"))
             )
         }
 

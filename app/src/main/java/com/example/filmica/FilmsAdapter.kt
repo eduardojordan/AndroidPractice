@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_details.view.*
+import com.squareup.picasso.Picasso
+
 import kotlinx.android.synthetic.main.item_film.view.*
-import kotlinx.android.synthetic.main.item_film.view.labelTitle
+
+import kotlinx.android.synthetic.main.fragment_details.view.imgPoster as imgPoster1
 import kotlinx.android.synthetic.main.fragment_details.view.labelVotes as labelVotes1
 import kotlinx.android.synthetic.main.item_film.view.titleGenre as titleGenre1
 
@@ -46,8 +48,14 @@ var film: Film? = null
                 with(itemView){
                     with(value){
                         labelTitle.text = value.title
-                        titleGenre.text = value.genre
+                        titleGenre1.text = value.genre
                         labelVotes.text = value.voteRating.toString()
+
+                        Picasso.get()
+                            .load(value.getPosterUrl())
+                            .placeholder(R.drawable.placeholder)
+                            .error(R.drawable.placeholder)
+                            .into(imgPoster)
                     }
                 }
             }
