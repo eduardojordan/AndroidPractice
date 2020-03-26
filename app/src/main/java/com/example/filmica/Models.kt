@@ -42,7 +42,7 @@ genre = parseGenres(jsonFilm.getJSONArray("genre_ids")) // ERROR
             val genres = mutableListOf<String>()
             
             if (genresArray.length() == 0) {
-                return "Desconocido"
+                return " "
             } else {
 
                 for (i in 0..(genresArray.length() - 1)) {

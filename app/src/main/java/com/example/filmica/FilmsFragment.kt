@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_films.*
+import kotlinx.android.synthetic.main.layout_error.*
 
 class FilmsFragment: Fragment() {
     lateinit var listener: OnItemClickListener
