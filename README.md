@@ -1,5 +1,5 @@
 # AndroidPractice
 
-![ScreenShot](Captura AndroidApp.png)
+![ScreenShot](CapturaAndroidApp.png)
 ![ScreenShot](Main.jpg)
 ![ScreenShot](detail.jpg)
